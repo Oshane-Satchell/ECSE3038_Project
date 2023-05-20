@@ -134,8 +134,8 @@ async def update(request: Request):
         input_light = datetime.strptime("18:00:00", "%H:%M:%S")
         off_time = datetime.strptime("20:00:00", "%H:%M:%S")
 
-    now_time = datetime.datetime.now(pytz.timezone('Jamaica')).time()
-    current_time = datetime.datetime.strptime(str(now_time),"%H:%M:%S.%f")
+    now_time = datetime.now(pytz.timezone('Jamaica')).time()
+    current_time = datetime.strptime(str(now_time),"%H:%M:%S.%f")
 
 
     condition["light"] = ((current_time < input_light) and (current_time < off_time ) & (condition["presence"] == 1))
@@ -147,8 +147,7 @@ async def update(request: Request):
     return new_obj
 
 
-#retreves last entry
-@app.get("/condiotion")
+@app.get("/condition")
 async def get_state():
     entry_final = await esp_data.find().sort('_id', -1).limit(1).to_list(1)
 
@@ -158,7 +157,7 @@ async def get_state():
             "fan": False,
             "light": False,
             "presence": False,
-            "current_time": datetime.datetime.now()
+            "current_time": datetime.now()
         }
 
     return entry_final
