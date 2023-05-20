@@ -46,9 +46,9 @@ def get_sunset():
     sunset_response = requests.get(sunset_url)
     sunset_data = sunset_response.json()
 
-    time_of_sunset = datetime.datetime.strptime(sunset_data['results']['sunset'], '%I:%M:%S %p').time()
+    time_of_sunset = datetime.strptime(sunset_data['results']['sunset'], '%I:%M:%S %p').time()
     
-    return datetime.datetime.strptime(str(time_of_sunset),"%H:%M:%S")
+    return datetime.strptime(str(time_of_sunset),"%H:%M:%S")
 
 
 regex = re.compile(r'((?P<hours>\d+?)h)?((?P<minutes>\d+?)m)?((?P<seconds>\d+?)s)?')
@@ -98,7 +98,7 @@ async def get_stored_data(request: Request):
     if input_light == "sunset":
         light_buffer = get_sunset()
     else:
-        light_buffer = datetime.datetime.strptime(input_light, "%H:%M:%S")
+        light_buffer = datetime.strptime(input_light, "%H:%M:%S")
     
     new_user_light = light_buffer + parse_time(light_time_off)
 
