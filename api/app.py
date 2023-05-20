@@ -13,8 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "https://simple-smart-hub-client.netlify.app",
-    ""
+    "https://simple-smart-hub-client.netlify.app"
 ]
 
 app.add_middleware(
@@ -27,7 +26,7 @@ app.add_middleware(
 
 pydantic.json.ENCODERS_BY_TYPE[ObjectId] = str
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://satchell_di_attican:password5771065@cluster0.bxae5si.mongodb.net/")
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://oshanesatchell:fhTKIXZJz9YToJKN@cluster0.lrgcwoj.mongodb.net/?retryWrites=true&w=majority")
 db = client.iotproject
 stored_data = db['stored_data']
 esp_data = db['esp_data']
