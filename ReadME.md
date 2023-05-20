@@ -1,4 +1,5 @@
 # Simple Smart Hub
+## by Oshane Satchell
 
 ## Introduction
 
